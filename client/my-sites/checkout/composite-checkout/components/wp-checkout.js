@@ -101,6 +101,7 @@ export default function WPCheckout( {
 	responseCart,
 	addItemToCart,
 	subtotal,
+	credits,
 	isCartPendingUpdate,
 	showErrorMessageBriefly,
 	isLoggedOutCart,
@@ -391,6 +392,7 @@ export default function WPCheckout( {
 							<PaymentMethodStep
 								activeStepContent={ paymentMethodStep.activeStepContent }
 								subtotal={ subtotal }
+								credits={ credits }
 							/>
 						}
 						completeStepContent={ paymentMethodStep.completeStepContent }
