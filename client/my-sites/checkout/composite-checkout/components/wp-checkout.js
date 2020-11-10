@@ -28,6 +28,7 @@ import { useShoppingCart } from '@automattic/shopping-cart';
 /**
  * Internal dependencies
  */
+import CheckoutTerms from '../components/checkout-terms';
 import useCouponFieldState from '../hooks/use-coupon-field-state';
 import useUpdateCartLocationWhenPaymentMethodChanges from '../hooks/use-update-cart-location-when-payment-method-changes';
 import WPCheckoutOrderReview from './wp-checkout-order-review';
@@ -95,7 +96,6 @@ export default function WPCheckout( {
 	changePlanLength,
 	siteId,
 	siteUrl,
-	CheckoutTerms,
 	countriesList,
 	StateSelect,
 	getItemVariants,
@@ -389,11 +389,7 @@ export default function WPCheckout( {
 					<CheckoutStep
 						stepId="payment-method-step"
 						activeStepContent={
-							<PaymentMethodStep
-								CheckoutTerms={ CheckoutTerms }
-								responseCart={ responseCart }
-								subtotal={ subtotal }
-							/>
+							<PaymentMethodStep responseCart={ responseCart } subtotal={ subtotal } />
 						}
 						completeStepContent={ paymentMethodStep.completeStepContent }
 						titleContent={ paymentMethodStep.titleContent }
@@ -506,7 +502,7 @@ const CheckoutSummaryBody = styled.div`
 	}
 `;
 
-function PaymentMethodStep( { CheckoutTerms, responseCart, subtotal } ) {
+function PaymentMethodStep( { responseCart, subtotal } ) {
 	const [ items, total ] = useLineItems();
 	const taxes = items.filter( ( item ) => item.type === 'tax' );
 	return (
