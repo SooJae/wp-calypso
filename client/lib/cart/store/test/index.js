@@ -48,8 +48,8 @@ describe( 'Cart Store', () => {
 
 	beforeEach( () => {
 		jest.isolateModules( () => {
-			CartStore = require( 'calypso/lib/cart/store' );
-			Dispatcher = require( 'calypso/dispatcher' );
+			CartStore = require( 'calypso/lib/cart/store' ).default;
+			Dispatcher = require( 'calypso/dispatcher' ).default;
 		} );
 
 		CartStore.setSelectedSiteId();
